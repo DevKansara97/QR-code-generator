@@ -1,4 +1,4 @@
 Flask
 qrcode
 Pillow
-guicorn
+gunicorn
