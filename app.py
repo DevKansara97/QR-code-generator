@@ -5,6 +5,16 @@ from datetime import datetime
 from werkzeug.utils import secure_filename
 from urllib.parse import quote
 
+import os
+import shutil
+
+# Ensure templates folder exists and index.html is inside it
+if not os.path.exists("templates"):
+    os.makedirs("templates")
+if os.path.exists("index.html"):
+    shutil.move("index.html", os.path.join("templates", "index.html"))
+
+
 app = Flask(__name__)
 
 if not os.path.exists("QR Code"):
