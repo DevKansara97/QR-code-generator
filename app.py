@@ -8,11 +8,18 @@ from urllib.parse import quote
 import os
 import shutil
 
-# Ensure templates folder exists and index.html is inside it
+# Ensure templates folder exists and move index.html
 if not os.path.exists("templates"):
     os.makedirs("templates")
 if os.path.exists("index.html"):
     shutil.move("index.html", os.path.join("templates", "index.html"))
+
+# Ensure static folder exists and move style.css
+if not os.path.exists("static"):
+    os.makedirs("static")
+if os.path.exists("style.css"):
+    shutil.move("style.css", os.path.join("static", "style.css"))
+
 
 
 app = Flask(__name__)
