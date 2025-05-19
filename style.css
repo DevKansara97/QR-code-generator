@@ -1,0 +1,120 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Body and Container */
+body {
+    background-color: #f3fda6;
+    color: #333;
+    font-size: 16px;
+    padding: 20px;
+}
+
+.container {
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+h3.sub-title {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #34495e;
+}
+
+/* Form Styles */
+form input,
+form button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+}
+
+/* Input Styling */
+form input {
+    border: 2px solid #ccc;
+    color: #555;
+}
+
+form input:focus {
+    border-color: #3498db;
+    background-color: #f0f8ff;
+    outline: none;
+}
+
+/* Button Styling */
+form button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #2980b9;
+}
+
+/* QR Code Display */
+#qr-code-container {
+    margin-top: 20px;
+    text-align: center;
+    padding: 20px;
+    background-color: #fafafa;
+    border: 2px dashed #ddd;
+    border-radius: 6px;
+}
+
+/* Error Message */
+.error {
+    color: red;
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Success Message */
+.success {
+    color: green;
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h3.sub-title {
+        font-size: 16px;
+    }
+
+    form input,
+    form button {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>QR Code Generator</h1>
+    <div class="container">
+        <form id="qr-form">
+
+            <h3 class="sub-title">Title</h3>
+            <input type="text" id="title" placeholder="Enter title">
+
+            <h3 class="sub-title">Link</h3>
+            <input type="text" id="link" placeholder="Enter link (optional)">
+
+            <h3 class="sub-title">Location</h3>
+            <input type="text" id="location" placeholder="Enter location (optional)">
+
+            <button type="button" onclick="generateQRCode()">Generate</button>
+        </form>
+
+        <div id="qr-result">
+            <h3>Generated QR Code:</h3>
+            <img id="qr-image" src="" alt="QR Code will appear here" style="display: none;">
+            <a id="download-link" href="" style="display: none;">Download QR Code</a>
+        </div>
+    </div>
+
+    <script>
+        async function generateQRCode() {
+            const title = document.getElementById('title').value;
+            const link = document.getElementById('link').value;
+            const location = document.getElementById('location').value;
+
+            const response = await fetch('/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title, link, location })
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                const filename = result.filename;
+
+                // Display the QR code image
+                const qrImage = document.getElementById('qr-image');
+                qrImage.src = `/download/${filename}`;
+                qrImage.style.display = 'block';
+
+                // Provide a download link
+                const downloadLink = document.getElementById('download-link');
+                downloadLink.href = `/download/${filename}`;
+                downloadLink.textContent = "Download QR Code";
+                downloadLink.style.display = 'block';
+            } else {
+                alert(result.error || "Failed to generate QR Code.");
+            }
+        }
+    </script>
+</body>
+
+</html>
